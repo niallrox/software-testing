@@ -10,8 +10,6 @@ import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static com.ifmo.task3.model.Person.Gender.MAN;
-
 public class Imperial {
     @Getter
     private final String name;
@@ -52,6 +50,6 @@ public class Imperial {
     }
 
     private Predicate<Person> mensPredicate() {
-        return p -> p.getGender().equals(MAN);
+        return p -> p.getGender().equals(Person.Gender.MAN);
     }
 }

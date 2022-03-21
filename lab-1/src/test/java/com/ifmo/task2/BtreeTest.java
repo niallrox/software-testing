@@ -1,18 +1,39 @@
 package com.ifmo.task2;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class BtreeTest {
+public class BtreeTest {
 
-    private final Btree first = new Btree();
-    private final Btree second = new Btree();
+    protected Btree first;
+    private Btree second;
+
+
+    @BeforeEach
+    void setUp() {
+        first = new Btree();
+        second = new Btree();
+    }
 
     @Test
-    public void TestInsertRemoveAndSearch() {
+    void testInsert() {
         first.insert(1);
-        assertEquals(first.search(1).keys[0],1);
+        assertEquals(1, first.search(1).getKeys()[0]);
+//        first.remove(1);
+    }
+
+    @Test
+    void testRemove() {
+        first.remove(1);
+        assertThrows(NullPointerException.class, () -> first.search(1));
+    }
+
+    @Test
+    public void testInsertRemoveAndSearch() {
+        first.insert(1);
+        assertEquals(first.search(1).getKeys()[0],1);
         first.insert(3);
         first.insert(7);
         first.insert(10);
@@ -32,15 +53,15 @@ class BtreeTest {
         first.insert(3);
         assertEquals("[1, 2, 3, 5, 6, 7, 10, 11, 12]", first.traverse().toString());
         first.search(7);
-        assertArrayEquals(new Integer[]{7}, first.arrayList.toArray(new Integer[0]));
+        assertArrayEquals(new Integer[]{7}, first.getArrayList().toArray(new Integer[0]));
         first.search(11);
-        assertArrayEquals(new int[]{7, 10, 11}, first.arrayList.stream().mapToInt(i -> i).toArray());
+        assertArrayEquals(new int[]{7, 10, 11}, first.getArrayList().stream().mapToInt(i -> i).toArray());
         first.search(10);
-        assertArrayEquals(new int[]{7, 10}, first.arrayList.stream().mapToInt(i -> i).toArray());
+        assertArrayEquals(new int[]{7, 10}, first.getArrayList().stream().mapToInt(i -> i).toArray());
     }
 
     @Test
-    void TestRemoveAndSearchWhenNodeEquals() {
+    void testRemoveAndSearchWhenNodeEquals() {
         second.insert(1);
         second.insert(1);
         second.insert(1);
@@ -50,7 +71,6 @@ class BtreeTest {
         second.remove(1);
         assertEquals("[1, 1, 1, 1]", second.traverse().toString());
         second.search(1);
-        assertArrayEquals(new int[]{1}, second.arrayList.stream().mapToInt(i -> i).toArray());
+        assertArrayEquals(new int[]{1}, second.getArrayList().stream().mapToInt(i -> i).toArray());
     }
-
 }

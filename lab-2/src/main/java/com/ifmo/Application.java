@@ -12,9 +12,11 @@ public class Application {
     private final FileWriter fileWriter;
 
     @SneakyThrows
-    public void evaluate(double x) {
+    public void evaluate(double x, int step) {
         double result = system.calculate(x);
         String[] data = {String.valueOf(x), String.format("Результат работы модуля %s", result)};
         fileWriter.write(data);
     }
+
+    public static void main(String[] args) {}
 }

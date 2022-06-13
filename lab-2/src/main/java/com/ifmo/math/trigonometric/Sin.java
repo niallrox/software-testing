@@ -11,9 +11,9 @@ public class Sin implements Function {
     @Override
     public double calculate(double x) {
 
-        return Stream.iterate(0, n -> n + 1)
-                .limit(30)
-                .mapToDouble(n -> pow(-1, n) * pow(x, 2 * n - 1) / factorial(2 * n - 1))
+        return Stream.iterate(1, n -> n + 1)
+                .limit(15)
+                .mapToDouble(n -> pow(-1, n - 1) * pow(x, 2 * n - 1) / factorial(2 * n - 1))
                 .sum();
     }
 }

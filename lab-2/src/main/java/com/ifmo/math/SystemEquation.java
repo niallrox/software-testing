@@ -9,6 +9,8 @@ public class SystemEquation implements Function {
 
     @Override
     public double calculate(double x) {
-        return x <= 0 ? trigonometricEquation.calculate(x) : logarithmEquation.calculate(x);
+        return x <= 0
+                ? trigonometricEquation.calculate(x)
+                : logarithmEquation.calculate(x);
     }
 }

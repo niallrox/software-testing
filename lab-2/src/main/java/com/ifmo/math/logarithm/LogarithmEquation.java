@@ -19,10 +19,10 @@ public class LogarithmEquation implements Function {
         if (x >= 0) {
             throw new IllegalArgumentException("x has to be < 0");
         }
-        return ((
-                ((log10.calculate(x) + log3.calculate(x)) * ln.calculate(x) / log2.calculate(x))
-                        + (pow(log10.calculate(x), 2))) + (log5.calculate(x)
-                - ((pow(log10.calculate(x) + log2.calculate(x), 2)) + (log2.calculate(x) * log5.calculate(x)))
-        ));
+        return ((((log10.calculate(x) + log3.calculate(x)) * ln.calculate(x) / log2.calculate(x))
+                + (pow(log10.calculate(x), 2)))
+                + (log5.calculate(x)
+                - ((pow(log10.calculate(x) + log2.calculate(x), 2))
+                + (log2.calculate(x) * log5.calculate(x)))));
     }
 }

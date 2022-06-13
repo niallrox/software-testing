@@ -15,9 +15,9 @@ public class Sec implements Function {
             throw new IllegalArgumentException("x can not be PI/2 in sec");
         }
 
-        return 1 / Stream.iterate(0, n -> n + 1)
-                .limit(30)
+        return 1 / (Stream.iterate(0, n -> n + 1)
+                .limit(15)
                 .mapToDouble(n -> pow(-1, n) * pow(x, 2 * n) / factorial(2 * n))
-                .sum();
+                .sum());
     }
 }

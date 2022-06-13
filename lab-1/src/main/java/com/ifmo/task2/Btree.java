@@ -13,12 +13,8 @@ public class Btree {
 
 
     public Btree() {
-        try {
-            this.root = null;
-            this.MinDeg = 3;
-        } catch (Throwable e) {
-            
-        }
+        this.root = null;
+        this.MinDeg = 3;
     }
 
     public ArrayList<Integer> traverse() {

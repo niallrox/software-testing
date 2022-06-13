@@ -33,5 +33,6 @@ subprojects {
 }
 
 test {
+    maxParallelForks = Runtime.runtime.availableProcessors()
     useJUnitPlatform()
 }
